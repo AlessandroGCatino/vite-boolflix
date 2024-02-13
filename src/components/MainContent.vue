@@ -1,18 +1,22 @@
 <template>
     <div>
-
+        
     </div>
 </template>
 
 <script>
+
 import {store} from "../store"
 
 export default {
     name: "MainContent",
-    data () {
+    data() {
         return {
             store,
         }
+    },
+    methods:{
+        
     }
 }
 </script>
