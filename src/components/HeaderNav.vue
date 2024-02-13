@@ -19,30 +19,28 @@ export default {
         }
     },
     methods: {
+        createUrl(media){
+            return store.apiUrl + `${media}?${store.apiKey}&language=it_IT&query=${store.searchText}`
+        },
         searchTitles(){
+            store.filmsSearched = []
+            store.tvseriesSearched = []
             if(store.searchText != ""){
-                let myUrl = populateArrays("movie")
+                let myUrl = this.createUrl("movie")
                 axios
                 .get(myUrl)
                 .then(result => {
                     store.filmsSearched = result.data.results
                 })
-                myUrl = populateArrays("tv")
+                myUrl = this.createUrl("tv")
                 axios
                 .get(myUrl)
                 .then(result => {
                     store.tvseriesSearched = result.data.results
                 })
-
-            } else {
-                store.filmsSearched = []
-                store.tvseriesSearched = []
             }
-        },
-        populateArrays(media){
-            return store.apiUrl + `${media}?${store.apiKey}&query=${store.searchText}`
-                
         }
+        
     }
 }
 </script>
