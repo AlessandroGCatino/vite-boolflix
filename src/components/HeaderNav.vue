@@ -1,6 +1,6 @@
 <template>
     <div class="back">
-        <h1>BoolFlix</h1>
+        <h1 @click="reloadPage">BoolFlix</h1>
         <div class="d-flex align-items-center gap-3">
             <input type="text" placeholder="Cosa vuoi guardare?" v-model="store.searchText" @keyup.enter="searchTitles()">
             <button class="btn btn-danger" @click="searchTitles()">Cerca</button>
@@ -19,12 +19,16 @@ export default {
         }
     },
     methods: {
+        reloadPage() {
+            window.location.reload();
+        },
         createUrl(media){
             return store.apiUrl + `${media}?${store.apiKey}&language=it-IT&query=${store.searchText}`
         },
         searchTitles(){
             store.filmsSearched = []
             store.tvseriesSearched = []
+            store.searched = true
             if(store.searchText != ""){
                 let myUrl = this.createUrl("movie")
                 axios
@@ -38,6 +42,9 @@ export default {
                 .then(result => {
                     store.tvseriesSearched = result.data.results
                 })
+                store.searched = true
+            } else {
+                store.searched = false
             }
         }
         
@@ -54,6 +61,7 @@ div.back{
     padding: 20px;
     h1{
         color: #ea0000;
+        cursor: pointer;
     }
 }
 </style>

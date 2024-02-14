@@ -1,6 +1,7 @@
 <template>
     <div class="content">
-        <h1 v-if="store.filmsSearched.length == 0 && store.tvseriesSearched.length == 0" class="text-center text-danger">Cerca un film o una serie TV</h1>
+        <h1 v-if="!store.searched" class="text-center text-danger">Cerca un film o una serie TV</h1>
+        <h1 v-else-if="store.filmsSearched.length == 0 && store.tvseriesSearched.length == 0 && store.searched == true" class="text-center text-danger">Non ci sono risultati per la tua ricerca</h1>
         <h2 v-if="store.filmsSearched.length != 0">Film</h2>
         <div class="d-flex flex-wrap">
             <DisplayCard v-for="(element, index) in store.filmsSearched"
