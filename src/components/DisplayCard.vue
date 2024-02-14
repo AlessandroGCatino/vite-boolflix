@@ -13,6 +13,10 @@
                 <span>{{ OGTitle }}</span>
             </div>
             <div>
+                <strong>Lingua: </strong>
+                <img :src="langFlagUrl" :alt="this.lang.toUpperCase()">
+            </div>
+            <div>
                 <strong>Voto: </strong>
                 <i v-for="n in this.rateStars" class="fa-solid fa-star"></i>
             </div>
@@ -42,6 +46,7 @@ export default {
             store,
             posterUrl: "",
             rateStars: 0,
+            langFlagUrl: ""
         }
     },
     methods:{
@@ -50,11 +55,19 @@ export default {
         },
         setStarsRate(){
             this.rateStars = Math.ceil((parseInt(this.vote)/2) + (parseInt(this.vote)%2))
+        },
+        setLang(){
+            let flag = this.lang
+            if (flag == "en"){
+                flag = "gb"
+            }
+            this.langFlagUrl = `https://flagcdn.com/16x12/${flag}.png`
         }
     },
     mounted(){
         this.createPosterUrl();
         this.setStarsRate();
+        this.setLang();
     }
 }
 </script>
@@ -102,6 +115,10 @@ export default {
         }
         .fa-star{
            color: yellow; 
+        }
+        img{
+            width: 25px;
+            margin-left: 5px;
         }
         
     }
