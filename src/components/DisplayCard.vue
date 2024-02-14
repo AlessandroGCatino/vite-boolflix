@@ -61,6 +61,9 @@ export default {
             if (flag == "en"){
                 flag = "gb"
             }
+            if (flag == "ja"){
+                flag = "jp"
+            }
             this.langFlagUrl = `https://flagcdn.com/16x12/${flag}.png`
         }
     },
