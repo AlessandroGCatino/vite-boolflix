@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         createUrl(media){
-            return store.apiUrl + `${media}?${store.apiKey}&language=it_IT&query=${store.searchText}`
+            return store.apiUrl + `${media}?${store.apiKey}&language=it-IT&query=${store.searchText}`
         },
         searchTitles(){
             store.filmsSearched = []

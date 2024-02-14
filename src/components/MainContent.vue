@@ -10,6 +10,7 @@
             :vote = element.vote_average
             :overview = element.overview
             :poster = element.poster_path
+            :lang = element.original_language
             />
         </div>
         <h2 v-if="store.tvseriesSearched.length != 0">Serie TV</h2>
@@ -21,6 +22,7 @@
              :vote = element.vote_average
              :overview = element.overview
              :poster = element.poster_path
+             :lang = element.original_language
             />
         </div>
     </div>
@@ -57,6 +59,7 @@ div.content{
     background-color: #434343;
     h2{
         margin-block: 20px;
+        color: red
     }
 }
 
