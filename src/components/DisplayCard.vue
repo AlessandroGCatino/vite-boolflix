@@ -1,5 +1,5 @@
 <template>
-    <div class="singleCard" >
+    <div v-if="this.poster != null" class="singleCard" >
         <figure>
             <img :src="posterUrl" :alt='title'>
         </figure>
